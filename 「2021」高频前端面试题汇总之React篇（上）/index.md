@@ -1,9 +1,9 @@
- 
+
 ![React面试题.png](1.png)
 
 ## 一、组件基础
 
-### 1. React 事件机制
+## 1. React 事件机制
 
 ```javascript
 <div onClick={this.handleClick.bind(this)}>点我</div>
@@ -25,7 +25,7 @@ JSX 上写的事件并没有绑定在对应的真实 DOM 上，而是通过事�
 - 合成事件首先抹平了浏览器之间的兼容问题，另外这是一个跨浏览器原生事件包装器，赋予了跨浏览器开发的能力；
 - 对于原生浏览器事件来说，浏览器会给监听器创建一个事件对象。如果你有很多的事件监听，那么就需要分配很多的事件对象，造成高额的内存分配问题。但是对于合成事件来说，有一个事件池专门来管理它们的创建和销毁，当事件需要被使用时，就会从池子中复用对象，事件回调结束后，就会销毁事件对象上的属性，从而便于下次复用事件对象。
 
-### 2. React的事件和普通的HTML事件有什么不同？
+## 2. React的事件和普通的HTML事件有什么不同？
 
 区别：
 
@@ -55,7 +55,7 @@ React基于Virtual DOM实现了一个SyntheticEvent层（合成事件层），�
 - **事件委派：** React会把所有的事件绑定到结构的最外层，使用统一的事件监听器，这个事件监听器上维持了一个映射来保存所有组件内部事件监听和处理函数。
 - **自动绑定：** React组件中，每个方法的上下文都会指向该组件的实例，即自动绑定this为当前组件。
 
-### 4. React 高阶组件、Render props、hooks 有什么区别，为什么要不断迭代
+## 4. React 高阶组件、Render props、hooks 有什么区别，为什么要不断迭代
 
 这三者是目前react解决代码复用的主要方式：
 
@@ -175,7 +175,7 @@ function CommentList(props) {
 **总结∶**
 Hoc、render props和hook都是为了解决代码复用的问题，但是hoc和render props都有特定的使用场景和明显的缺点。hook是react16.8更新的新的API，让组件逻辑复用更简洁明了，同时也解决了hoc和render props的一些缺点。
 
-### 5. 对React-Fiber的理解，它解决了什么问题？
+## 5. 对React-Fiber的理解，它解决了什么问题？
 
 React V15 在渲染时，会递归比对 VirtualDOM 树，找出需要变动的节点，然后同步更新它们， 一气呵成。这个过程期间， React 会占据浏览器资源，这会导致用户触发的事件得不到响应，并且会导致掉帧，**导致用户感觉到卡顿**。
 
@@ -214,7 +214,7 @@ PureComponent表示一个纯组件，可以用来优化React程序，减少rende
 
 函数式组件(`Functional component`)根本没有实例`instance`。类组件(`Class component`)有实例`instance`，但是永远也不需要直接创建一个组件的实例，因为React帮我们做了这些。
 
-### 8. React.createClass和extends Component的区别有哪些？
+## 8. React.createClass和extends Component的区别有哪些？
 
 React.createClass和extends Component的bai区别主要在于：
 
@@ -251,7 +251,7 @@ React.createClass和extends Component的bai区别主要在于：
 - React.createClass：使用 React.createClass 的话，可以在创建组件时添加一个叫做 mixins 的属性，并将可供混合的类的集合以数组的形式赋给 mixins。
 - 如果使用 ES6 的方式来创建组件，那么 `React mixins` 的特性将不能被使用了。
 
-### 9. React 高阶组件是什么，和普通组件有什么区别，适用什么场景
+## 9. React 高阶组件是什么，和普通组件有什么区别，适用什么场景
 
 官方解释∶ 
 
@@ -430,7 +430,7 @@ export default withFetching(fetching('some-other-type'))(MovieList);
 
 componentWillReceiveProps在初始化render的时候不会执行，它会在Component接受到新的状态(Props)时被触发，一般用于父组件状态更新时子组件的重新渲染。
 
-### 11. 哪些方法会触发 React 重新渲染？重新渲染 render 会做些什么？
+## 11. 哪些方法会触发 React 重新渲染？重新渲染 render 会做些什么？
 
 **（1）哪些方法会触发 react 重新渲染?**
 
@@ -479,7 +479,7 @@ class App extends React.Component {
 
 React 的处理 render 的基本思维模式是每次一有变动就会去重新渲染整个应用。在 Virtual DOM 没有出现之前，最简单的方法就是直接调用 innerHTML。Virtual DOM厉害的地方并不是说它比直接操作 DOM 快，而是说不管数据怎么变，都会尽量以最小的代价去更新 DOM。React 将 render 函数返回的虚拟 DOM 树与老的进行比较，从而确定 DOM 要不要更新、怎么更新。当 DOM 树很大时，遍历两棵树进行各种比对还是相当耗性能的，特别是在顶层 setState 一个微小的修改，默认会去遍历整棵树。尽管 React 使用高度优化的 Diff 算法，但是这个过程仍然会损耗性能.
 
-### 12. React如何判断什么时候重新渲染组件？
+## 12. React如何判断什么时候重新渲染组件？
 
 组件状态的改变可以因为`props`的改变，或者直接通过`setState`方法改变。组件获得新的状态，然后React决定是否应该重新渲染组件。只要组件的state发生变化，React就会对组件进行重新渲染。这是因为React中的`shouldComponentUpdate`方法默认返回`true`，这就是导致每次更新都重新渲染的原因。
 
@@ -530,7 +530,7 @@ React.createClass会自绑定函数方法，导致不必要的性能开销，增
 - React.createClass创建的组件，其状态state是通过getInitialState方法来配置组件相关的状态；
 - React.Component创建的组件，其状态state是在constructor中像初始化组件属性一样声明的。
 
-### 14. 对有状态组件和无状态组件的理解及使用场景
+## 14. 对有状态组件和无状态组件的理解及使用场景
 
 **（1）有状态组件**
 
@@ -592,7 +592,7 @@ React.createClass会自绑定函数方法，导致不必要的性能开销，增
 **总结：**
 组件内部状态且与外部无关的组件，可以考虑用状态组件，这样状态树就不会过于复杂，易于理解和管理。当一个组件不需要管理自身状态时，也就是无状态组件，应该优先设计为函数组件。比如自定义的 `<Button/>`、 `<Input />` 等组件。
 
-### 15. 对React中Fragment的理解，它的使用场景是什么？
+## 15. 对React中Fragment的理解，它的使用场景是什么？
 
 在React中，组件返回的元素只能有一个根元素。为了不添加多余的DOM节点，我们可以使用Fragment标签来包裹所有的元素，Fragment标签不会渲染出任何元素。React官方对Fragment的解释：
 
@@ -623,7 +623,7 @@ render() {
 }
 ```
 
-### 16. React如何获取组件对应的DOM元素？
+## 16. React如何获取组件对应的DOM元素？
 
 可以用ref来获取某个子节点的实例，然后通过当前class组件实例的一些特定属性来直接获取子节点实例。ref有三种实现方法:
 
@@ -645,7 +645,7 @@ render() {
 不可以，render 阶段 DOM 还没有生成，无法获取 DOM。DOM 的获取需要在 pre-commit 阶段和 commit 阶段：
 ![image.png](3.png)
 
-### 18. 对React的插槽(Portals)的理解，如何使用，有哪些使用场景
+## 18. 对React的插槽(Portals)的理解，如何使用，有哪些使用场景
 
 React 官方对 Portals 的定义：
 
@@ -693,7 +693,7 @@ render() {
 }
 ```
 
-### 19. 在React中如何避免不必要的render？
+## 19. 在React中如何避免不必要的render？
 
 React 基于虚拟 DOM 和高效 Diff 算法的完美配合，实现了对 DOM 最小粒度的更新。大多数情况下，React 对 DOM 的渲染效率足以业务日常。但在个别复杂业务场景下，性能问题依然会困扰我们。此时需要采取一些措施来提升运行性能，其很重要的一个方向，就是避免不必要的渲染（Render）。这里提下优化的点：
 
@@ -709,7 +709,7 @@ React 基于虚拟 DOM 和高效 Diff 算法的完美配合，实现了对 DOM �
 
 React.memo 是 React 16.6 新的一个 API，用来缓存组件的渲染，避免不必要的更新，其实也是一个高阶组件，与 PureComponent 十分类似，但不同的是， React.memo只能用于函数组件。
 
-### 20. 对 React-Intl 的理解，它的工作原理？
+## 20. 对 React-Intl 的理解，它的工作原理？
 
 React-intl是雅虎的语言国际化开源项目FormatJS的一部分，通过其提供的组件和API可以与ReactJS绑定。
 
@@ -2171,4 +2171,3 @@ import { Switch, Route} from 'react-router-dom'
    <Route exact path="/login" component={Login}></Route>
 </Switch>
 ```
- 
