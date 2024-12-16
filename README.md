@@ -16,3 +16,9 @@
 - 高频前端面试题汇总之手写代码篇
 - 高频前端面试题汇总之代码输出结果篇
 - 力扣（LeetCode）https://leetcode-cn.com/   50-100道   
+
+### GOAL:
+
+- [ ] CSS + JS 
+- [ ] HOT100
+- [ ] PRJ
